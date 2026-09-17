@@ -1,0 +1,92 @@
+Custodia Project Manual: IoT Hazard Detection System
+Custodia is an IoT safety platform designed for multi-zone environmental monitoring (fire and gas leaks) with immediate alerting and real-time visual telemetry on a web dashboard.
+
+1. Hardware Components (New Delhi Local Market & Online Options)
+All parts are affordable and easily accessible in New Delhi (e.g., Lajpat Rai Market in Chandni Chowk, Nehru Place) or online platforms (Robu.in, Amazon.in).
+
+Component
+
+Quantity
+
+Approx. Price (INR)
+
+Description / Function
+
+ESP32 NodeMCU Board
+
+1
+
+₹300 – ₹450
+
+Microcontroller with built-in Wi-Fi to send telemetry to cloud.
+
+MQ-2 Gas Sensor Module
+
+1
+
+₹70 – ₹120
+
+Detects LPG, smoke, and flammable gases.
+
+Flame Sensor Module (IR)
+
+1
+
+₹40 – ₹70
+
+Detects fire / light wavelength of flame.
+
+DHT11 Temp & Humidity Sensor
+
+1
+
+₹80 – ₹130
+
+Monitors temperature and humidity in the room.
+
+5V Active Buzzer
+
+1
+
+₹15 – ₹30
+
+Emits audible warning alarm locally during a hazard.
+
+5V Single-Channel Relay Module
+
+1
+
+₹50 – ₹90
+
+Acts as an automated safety cutoff switch for power/valves.
+
+Breadboard & Jumper Wires
+
+1 Pack
+
+₹120 – ₹180
+
+Prototyping without soldering.
+
+2. Wiring & Pin Connections
+Power Rails: ESP32 5V Pin to Breadboard Positive (+) Rail; ESP32 GND Pin to Breadboard Negative (-) Rail.
+MQ-2 Gas Sensor: VCC → 5V Rail | GND → GND Rail | A0 → ESP32 Pin GPIO 34
+Flame Sensor: VCC → 5V Rail | GND → GND Rail | D0 → ESP32 Pin GPIO 35
+DHT11 Sensor: VCC → 5V Rail | GND → GND Rail | DATA → ESP32 Pin GPIO 4
+Active Buzzer: Positive (+) Pin → ESP32 Pin GPIO 19 | Negative (-) Pin → GND Rail
+Relay Module: VCC → 5V Rail | GND → GND Rail | IN → ESP32 Pin GPIO 21
+3. Step-by-Step Setup Guide
+Set Up Firebase Cloud Database:
+Go to Firebase Console (console.firebase.google.com) and create a new project.
+Navigate to Build → Realtime Database → Create Database.
+Select Start in Test Mode for easy reading/writing during testing.
+Copy your Database URL (e.g., https://your-project-id.firebaseio.com/).
+Upload Code to ESP32:
+Open Arduino IDE on your computer.
+Go to Tools → Library Manager, search for DHT sensor library by Adafruit, and click Install.
+Paste the ESP32 source code below into your sketch. Replace YOUR_WIFI_NAME, YOUR_WIFI_PASSWORD, and YOUR_FIREBASE_PROJECT_ID with your details.
+Connect your ESP32 via USB and click Upload.
+Launch Dashboard:
+Copy the Web Dashboard code below and save it as index.html on your PC.
+Replace YOUR_FIREBASE_PROJECT_ID with your Firebase ID inside index.html.
+Double-click index.html to open the live monitoring dashboard in any web browser.
